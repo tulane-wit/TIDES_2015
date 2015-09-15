@@ -14,7 +14,8 @@ const int motor1Pin1 = 3;    // H-bridge pin 2, 1A
 const int motor1Pin2 = 5;    // H-bridgepin 7, 2A
 const int motor2Pin1 = 6;    // H-bridge pin 10, 3A
 const int motor2Pin2 = 9;    // H-bridge pin 15, 4A
-const int enablePin = 4;    // H-bridge enable pin
+const int enablePin1 = 8;    // H-bridge enable pin 1
+const int enablePin2 = 10;    // H-bridge enable pin 2
 int analogMotorVoltage = 50;
 int maxDelay = 500;
 
@@ -24,7 +25,8 @@ void setup() {
   pinMode(motor1Pin2, OUTPUT);
   pinMode(motor2Pin1, OUTPUT);
   pinMode(motor2Pin2, OUTPUT);
-  pinMode(enablePin, OUTPUT);
+  pinMode(enablePin1, OUTPUT);
+  pinMode(enablePin2, OUTPUT);
   startCar();
 }
 //////////////////////////////////////////////////////////////////////////
@@ -81,12 +83,14 @@ void turnInPlaceRight(int volts) {
 void startCar() {
   // EXERCISE: Write this function
   // set enablePin high so that motor can turn on:
-  digitalWrite(enablePin, HIGH);
+  digitalWrite(enablePin1, HIGH);
+  digitalWrite(enablePin2, HIGH);
 }
 
 void stopCar() {
   // EXERCISE: Write this function
-  digitalWrite(enablePin, LOW);
+  digitalWrite(enablePin1, LOW);
+  digitalWrite(enablePin2, LOW);
   digitalWrite(motor1Pin1, LOW);
   digitalWrite(motor1Pin2, LOW);
   digitalWrite(motor2Pin1, LOW);
