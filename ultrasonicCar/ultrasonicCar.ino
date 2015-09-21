@@ -35,7 +35,7 @@ void loop() {
   delay(50);    // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.  
   if (getDistance() < 10 ){
     stopCar();
-    turnInPlace(90);
+    turnInPlaceRight(90);
   }
   else {
     moveCar(10);
@@ -44,78 +44,40 @@ void loop() {
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-void turnInPlace(int rotation) {
-  // turn motor for a specified amount of time
-  int turnTime = map(abs(rotation)%360, 0, 360, 0, maxDelay);
-  // OR turn motor at a specific voltage to maxVoltage (if that equals a full rotation)
-  // int turnTime = map(abs(rotation)%360, 0, 360, 0, maxVoltage);
-  startCar();
-  if(rotation < 0) {
-    turnInPlaceLeft(analogMotorVoltage);
-    delay(turnTime); 
-    stopCar();  
-  }
-  else {
-    turnInPlaceRight(analogMotorVoltage);
-    delay(turnTime);  
-    stopCar();  
-  }
-}
-
 void turnInPlaceLeft(int volts) {
   // EXERCISE: Write this function
   // LESSON: How to get car to turn in place
-  analogWrite(motor1Pin1, 0);   // set leg 1 of the H-bridge low
-  analogWrite(motor1Pin2, volts);  // set leg 2 of the H-bridge high 
-  // move motors in opposite directions
-  analogWrite(motor2Pin1, volts);  
-  analogWrite(motor2Pin2, 0);
 }
 
 void turnInPlaceRight(int volts) {
   // EXERCISE: Write this function
-  analogWrite(motor1Pin1, volts);  
-  analogWrite(motor1Pin2, 0); 
-  analogWrite(motor2Pin1, 0); 
-  analogWrite(motor2Pin2, volts);
+
 }
 
 void startCar() {
   // EXERCISE: Write this function
   // set enablePin high so that motor can turn on:
-  digitalWrite(enablePin1, HIGH);
-  digitalWrite(enablePin2, HIGH);
+
 }
 
 void stopCar() {
   // EXERCISE: Write this function
-  digitalWrite(enablePin1, LOW);
-  digitalWrite(enablePin2, LOW);
-  digitalWrite(motor1Pin1, LOW);
-  digitalWrite(motor1Pin2, LOW);
-  digitalWrite(motor2Pin1, LOW);
-  digitalWrite(motor2Pin2, LOW);
 }
 
 void moveCar(int carVelocity) {
   // EXERCISE: Write this function
   // how long, how fast
-  if(carVelocity > 0) moveForward(carVelocity%255);
-  else moveBackward(abs(carVelocity)%255);
+
 }
 
 void moveForward(int carSpeed) {
-  analogWrite(motor1Pin1, carSpeed);  
-  analogWrite(motor1Pin2, 0); 
-  analogWrite(motor2Pin1, carSpeed); 
-  analogWrite(motor2Pin2, 0);
+  // EXERCISE: Write this function
+
 }
 
 void moveBackward(int carSpeed) {
-  analogWrite(motor1Pin1, 0);  
-  analogWrite(motor1Pin2, carSpeed); 
-  analogWrite(motor2Pin1, 0); 
-  analogWrite(motor2Pin2, carSpeed);
+  // EXERCISE: Write this function
+
 }
 
 void printPingTime() {
